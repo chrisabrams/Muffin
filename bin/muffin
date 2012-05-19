@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+
+var path = {
+	called : process.cwd(),
+	markx  : __dirname + '/../node_modules/markx/bin/markx'
+};
+
+var muffin  = require('../lib/muffin')(path);console.log(muffin);
+
+program
+	.version('0.0.1')
+
+program
+	.command('bake')
+	.description('build the site out')
+	.action(function (){
+		muffin.bake({
+			from : '/site/blog/demo.md',
+			to   : '/public/blog/demo.html',
+			template: '/templates/master.jade'
+		});
+	});
+
+program
+	.command('prepare')
+	.description('setup site template')
+	.action(function() {
+
+	});
+
+program.parse(process.argv);
