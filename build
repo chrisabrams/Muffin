@@ -17,6 +17,7 @@ function concat(fileList, distPath) {
 
 concat([
     './src/muffin.js',
+    './src/directory/read.js',
     './src/bake.js',
     './src/exports.js'
 ], DIST_FILE_PATH);

@@ -16,7 +16,7 @@ describe('muffin.bake()', function() {
 	it('should convert a markdown file and a jade template into a .html file', function() {
 		muffin.bake({
 			input    : '/testfiles/demo.md',
-			output  : '/testfiles/demo.html',
+			output   : '/testfiles/demo.html',
 			template : '/testfiles/master.jade'
 		});
 	});
