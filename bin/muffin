@@ -7,7 +7,7 @@ var path = {
 	markx  : __dirname + '/../node_modules/markx/bin/markx'
 };
 
-var muffin  = require('../lib/muffin')(path);console.log(muffin);
+var muffin = require('../lib/muffin')(path);
 
 program
 	.version('0.0.1')
@@ -15,11 +15,11 @@ program
 program
 	.command('bake')
 	.description('build the site out')
-	.action(function (){
+	.action(function() {
 		muffin.bake({
-			from : '/site/blog/demo.md',
-			to   : '/public/blog/demo.html',
-			template: '/templates/master.jade'
+			input    : '/site/blog/demo.md',
+			output   : '/public/blog/demo.html',
+			template : '/templates/master.jade'
 		});
 	});
 
