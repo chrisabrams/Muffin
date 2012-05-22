@@ -1,6 +1,7 @@
 muffin.dir.read = function(o) {
 	if(o.path) {
 		fs.readdir(o.path, function(err, files) {
+
 			if(o.ext) {
 				files = files.filter(function(file) {
 							var extLength = o.ext.length;
@@ -11,7 +12,7 @@ muffin.dir.read = function(o) {
 			}
 
 			files.forEach(function(file) {
-				console.log(file);
+				//Got the file I wanted
 			});
 		});
 	} else {
