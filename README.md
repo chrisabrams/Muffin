@@ -1,10 +1,10 @@
 #Muffin (work in progress - not ready)
-A node.js module that converts jade and markdown into a static blog.
+A node.js module that converts jade and markdown into a static site/blog.
 
 ##Build
 
 	./build
 
-##Tests
+##Test
 
 	make test

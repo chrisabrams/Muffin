@@ -9,10 +9,9 @@ var path = require('path');
 describe('muffin.init()', function() {
 	it('should be able to setup directories needed for bake', function() {
 		var testPath = {
+			articles  : muffin.path.called + '/testfiles/articles',
+			blog      : muffin.path.called + '/testfiles/public/blog',
 			public    : muffin.path.called + '/testfiles/public',
-			publicblog: muffin.path.called + '/testfiles/public/blog',
-			site      : muffin.path.called + '/testfiles/site',
-			siteblog  : muffin.path.called + '/testfiles/site/blog',
 			templates : muffin.path.called + '/testfiles/templates'
 		};
 
