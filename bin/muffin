@@ -16,7 +16,7 @@ program
 	.description('build the site out')
 	.action(function() {
 		muffin.bake({
-			input    : '/site/blog/demo.md',
+			input    : '/articles/demo.md',
 			output   : '/public/blog/demo.html',
 			template : '/templates/master.jade'
 		});
