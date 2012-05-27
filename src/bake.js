@@ -26,8 +26,6 @@ muffin.bake = function(o) {
 		throw new Error();
 	}
 
-	//console.log("command: ", command);
-
 	exec(command, function(error, stdout, stderr) {
 		console.log('stdout: ' + stdout);
 		console.log('stderr: ' + stderr);

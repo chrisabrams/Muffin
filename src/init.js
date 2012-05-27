@@ -27,7 +27,13 @@ muffin.init = function(o) {
 
 	fs.copyFile(muffin.path.lib + '/default.json', outputPath + '/authors/default.json', function(err) {
 		if(!err) {
-			fs.copyFile(muffin.path.lib + '/package.json', outputPath + '/package.json', function(err) {
+			var packageFilePath = outputPath + '/package.json';
+			var package = path.existsSync(packageFilePath);
+			if(package) {
+				fs.unlink(packageFilePath);
+			}
+
+			fs.copyFile(muffin.path.lib + '/package.json', packageFilePath, function(err) {
 				if(err) {
 					throw err;
 				}

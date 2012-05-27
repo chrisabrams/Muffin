@@ -1,3 +1,9 @@
 {
-	"just": "test"
+	"id"       : "abrams",
+	"name"     : "Chris Abrams",
+	"email"    : "mail@chrisabrams.com",
+	"github"   : "chrisabrams",
+	"twitter"  : "chrisabramsweb",
+	"location" : "San Francisco, CA",
+	"bio"      : "Developer in Silicon Valley."
 }
