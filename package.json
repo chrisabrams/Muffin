@@ -14,11 +14,12 @@
 	},
 
 	"engines": {
-		"node": "v0.6.17"
+		"node": ">= 0.6.17"
 	},
 
 	"dependencies": {
 		"commander": "0.6.0",
+		"fs-extra": "0.0.4",
 		"markx" : "0.0.16",
 		"plates": "0.4.6",
 		"uglify-js": "1.2.6",
