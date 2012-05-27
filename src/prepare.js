@@ -5,6 +5,7 @@
  * @param o.path     {String} Path for output
  */
 muffin.prepare = function(o) {
+	var o = (o || {});
 
 	//If a specific path was not called, then initialize in the current path of the CLI
 	var outputPath = (o.path || muffin.path.called);

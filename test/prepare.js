@@ -6,7 +6,7 @@ var muffin  = require('../lib/muffin')({
 });
 var path    = require('path');
 
-describe('muffin.init()', function() {
+describe('muffin.prepare()', function() {
 	it('should be able to setup directories and files needed for bake', function() {
 
 		muffin.prepare({
