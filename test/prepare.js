@@ -9,7 +9,7 @@ var path    = require('path');
 describe('muffin.init()', function() {
 	it('should be able to setup directories and files needed for bake', function() {
 
-		muffin.init({
+		muffin.prepare({
 			path: muffin.path.called + '/testfiles'
 		});
 	});

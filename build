@@ -19,7 +19,7 @@ concat([
     './src/muffin.js',
     './src/directory/read.js',
     './src/bake.js',
-    './src/init.js',
+    './src/prepare.js',
     './src/exports.js',
     './src/util.js'
 ], DIST_FILE_PATH);

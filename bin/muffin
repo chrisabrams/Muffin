@@ -23,10 +23,10 @@ program
 	});
 
 program
-	.command('init')
+	.command('prepare')
 	.description('setup site template')
 	.action(function() {
-		muffin.init();
+		muffin.prepare();
 	});
 
 program.parse(process.argv);
