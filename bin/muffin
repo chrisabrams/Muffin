@@ -23,6 +23,13 @@ program
 	});
 
 program
+	.command('burn')
+	.description('destroy the setup')
+	.action(function() {
+		muffin.burn();
+	});
+
+program
 	.command('prepare')
 	.description('setup site template')
 	.action(function() {

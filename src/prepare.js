@@ -5,36 +5,31 @@
  * @param o.path     {String} Path for output
  */
 muffin.prepare = function(o) {
-	var o = (o || {});
+	var _this = this,
+		o = (o || {});
 
 	//If a specific path was not called, then initialize in the current path of the CLI
 	var outputPath = (o.path || muffin.path.called);
 
-	var dirPaths = {
-			articles  : outputPath + '/articles',
-			authors   : outputPath + '/authors',
-			blog      : outputPath + '/public/blog',
-			public    : outputPath + '/public',
-			templates : outputPath + '/templates'
-		};
+	muffin.burn({
+		path: outputPath
+	});
 
-	[dirPaths.articles, dirPaths.authors, dirPaths.blog, dirPaths.public, dirPaths.templates].forEach(function(path) {
-		wrench.rmdirSyncRecursive(path, true);
+	var dirPaths = new muffin.directories({
+		path: outputPath
 	});
 
 	[dirPaths.articles, dirPaths.authors, dirPaths.public, dirPaths.blog, dirPaths.templates].forEach(function(path) {
 		fs.mkdirSync(path);
 	});
 
-	fs.copyFile(muffin.path.lib + '/default.json', outputPath + '/authors/default.json', function(err) {
-		if(!err) {
-			var packageFilePath = outputPath + '/package.json';
-			var package = path.existsSync(packageFilePath);
-			if(package) {
-				fs.unlink(packageFilePath);
-			}
+	var files = new muffin.files({
+		path: outputPath
+	});
 
-			fs.copyFile(muffin.path.lib + '/package.json', packageFilePath, function(err) {
+	fs.copyFile(muffin.path.lib + '/default.json', files.authors, function(err) {
+		if(!err) {
+			fs.copyFile(muffin.path.lib + '/package.json', files.package, function(err) {
 				if(err) {
 					throw err;
 				}
