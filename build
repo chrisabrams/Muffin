@@ -21,6 +21,7 @@ concat([
     './src/files.js',
     './src/bake.js',
     './src/burn.js',
+    './src/post.js',
     './src/prepare.js',
     './src/exports.js',
     './src/util.js'

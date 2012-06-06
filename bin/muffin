@@ -30,6 +30,13 @@ program
 	});
 
 program
+	.command('post')
+	.description('create a new post')
+	.action(function() {
+		muffin.post();
+	});
+
+program
 	.command('prepare')
 	.description('setup site template')
 	.action(function() {

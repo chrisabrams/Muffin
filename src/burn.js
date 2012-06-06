@@ -25,8 +25,8 @@ muffin.burn = function(o) {
 		path: destroyPath
 	});
 
-	var package = path.existsSync(files.package);
+	var package = path.existsSync(files.package.copy);
 	if(package) {
-		fs.unlink(files.package);
+		fs.unlink(files.package.copy);
 	}
 };

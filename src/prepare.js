@@ -9,7 +9,8 @@ muffin.prepare = function(o) {
 		o = (o || {});
 
 	//If a specific path was not called, then initialize in the current path of the CLI
-	var outputPath = (o.path || muffin.path.called);
+	var libPath    = (o.libPath || muffin.path.lib);
+	var outputPath = (o.outputPath || muffin.path.called);
 
 	muffin.burn({
 		path: outputPath
@@ -19,17 +20,19 @@ muffin.prepare = function(o) {
 		path: outputPath
 	});
 
+	//Create directories needed
 	[dirPaths.articles, dirPaths.authors, dirPaths.public, dirPaths.blog, dirPaths.templates].forEach(function(path) {
 		fs.mkdirSync(path);
 	});
 
 	var files = new muffin.files({
-		path: outputPath
+		libPath    : libPath,
+		outputPath : outputPath
 	});
 
-	fs.copyFile(muffin.path.lib + '/default.json', files.authors, function(err) {
+	fs.copyFile(files.authors.default, files.authors.copy, function(err) {
 		if(!err) {
-			fs.copyFile(muffin.path.lib + '/package.json', files.package, function(err) {
+			fs.copyFile(files.package.default, files.package.copy, function(err) {
 				if(err) {
 					throw err;
 				}

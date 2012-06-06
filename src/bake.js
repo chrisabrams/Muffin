@@ -10,18 +10,22 @@ muffin.bake = function(o) {
 	var _this    = this,
 		command = muffin.path.markx + ' ';
 
-	if(o.template) {
-		command = command + '--template ' + muffin.path.called + o.template + ' ';
+	var inputPath    = (o.inputPath    || false);
+	var outputPath   = (o.outputPath   || false);
+	var templatePath = (o.templatePath || false);
+
+	if(templatePath) {
+		command += '--template ' + templatePath + ' ';
 	}
 
-	if(o.input) {
-		command = command + muffin.path.called + o.input + ' > ';
+	if(inputPath) {
+		command += inputPath + ' > ';
 	} else {
 		throw new Error();
 	}
 
-	if(o.output) {
-		command = command + muffin.path.called + o.output;
+	if(outputPath) {
+		command += outputPath;
 	} else {
 		throw new Error();
 	}

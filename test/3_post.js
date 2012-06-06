@@ -6,11 +6,11 @@ var muffin  = require('../lib/muffin')({
 });
 var path    = require('path');
 
-describe('muffin.prepare()', function() {
-	it('should be able to setup directories and files needed for bake', function() {
+describe('muffin.post()', function() {
+	it('should be able to create files needed for post', function() {
 
-		muffin.prepare({
-			path: muffin.path.called + '/testfiles'
+		muffin.post({
+			outputPath: muffin.path.called + '/testfiles'
 		});
 	});
 });

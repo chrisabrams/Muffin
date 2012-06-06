@@ -8,10 +8,21 @@
 muffin.files = function(o) {
 	var o = (o || {});
 
-	var calledPath = (o.path || muffin.path.called);
+	var libPath    = (o.libPath || muffin.path.lib);
+	var outputPath = (o.outputPath || muffin.path.called);
 
 	return {
-		authors: calledPath + '/authors/default.json',
-		package: calledPath + '/package.json'
+		authors : {
+			default : libPath + '/default.json',
+			copy    : outputPath + '/authors/default.json'
+		},
+		content : {
+			default : libPath + '/default.md',
+			copy    : outputPath + '/articles/default.md'
+		},
+		package : {
+			default : libPath + '/package.json',
+			copy    : outputPath + '/package.json'
+		}
 	};
 };
