@@ -1,0 +1,15 @@
+{
+	"destination": "/lib/muffin.js",
+	"src": [
+		"/src/muffin.js",
+		"/src/blog/blog.js",
+	    "/src/directories.js",
+	    "/src/files.js",
+	    "/src/bake.js",
+	    "/src/burn.js",
+	    "/src/post.js",
+	    "/src/prepare.js",
+	    "/src/exports.js",
+	    "/src/util.js"
+	]
+}

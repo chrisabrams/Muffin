@@ -20,6 +20,10 @@ muffin.files = function(o) {
 			default : libPath + '/default.md',
 			copy    : outputPath + '/articles/default.md'
 		},
+		muffin : {
+			default : libPath + '/muffin.json',
+			copy    : outputPath + '/muffin.json'
+		}
 		package : {
 			default : libPath + '/package.json',
 			copy    : outputPath + '/package.json'

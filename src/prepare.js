@@ -33,8 +33,12 @@ muffin.prepare = function(o) {
 	fs.copyFile(files.authors.default, files.authors.copy, function(err) {
 		if(!err) {
 			fs.copyFile(files.package.default, files.package.copy, function(err) {
-				if(err) {
-					throw err;
+				if(!err) {
+					fs.copyFile(files.muffin.default, files.muffin.copy, function(err) {
+						if(err) {
+							throw err;
+						}
+					});
 				}
 			});
 		} else {
