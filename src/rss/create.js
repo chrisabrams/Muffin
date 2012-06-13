@@ -1,0 +1,3 @@
+Muffin.rss.Create = function() {
+
+};

@@ -4,7 +4,7 @@
  * @param o          {Object} Options that are passed to prepare()
  * @param o.path     {String} Path for output
  */
-muffin.post = function(o) {
+Muffin.blog.Post = function() {
 	var _this = this,
 		o = (o || {});
 

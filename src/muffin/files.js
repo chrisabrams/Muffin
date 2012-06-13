@@ -5,7 +5,7 @@
  * @param o.path     {String} Path to files that will be wiped
  */
 
-muffin.files = function(o) {
+Muffin.files = function(o) {
 	var o = (o || {});
 
 	var libPath    = (o.libPath || muffin.path.lib);

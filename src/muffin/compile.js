@@ -6,7 +6,7 @@
  * @param o.output   {String} Path to .html file output
  * @param o.template {String} Path to jade template
  */
-muffin.bake = function(o) {
+Muffin.compile = function() {
 	var _this    = this,
 		command = muffin.path.markx + ' ';
 

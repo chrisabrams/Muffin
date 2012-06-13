@@ -12,8 +12,9 @@
         "node": ">= 0.6.17"
     },
     "dependencies": {
-        "flow": "git+ssh://git@github.com:chrisabrams/flow.git#0.0.4",
-        "http-server": "0.2.9"
+        "flow" : "git+ssh://git@github.com:chrisabrams/flow.git#0.0.4",
+        "node-rss" : "git+ssh://git@github.com:chrisabrams/node-rss.git#0.0.1",
+        "http-server" : "0.2.9"
     },
     "scripts": {
         "start": "bin/server"

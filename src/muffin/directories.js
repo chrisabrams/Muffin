@@ -4,7 +4,7 @@
  * @param o          {Object} Options that are passed to destroy()
  * @param o.path     {String} Path to directories that will be wiped
  */
-muffin.directories = function(o) {
+Muffin.directories = function(o) {
 	var o = (o || {});
 
 	var calledPath = (o.path || muffin.path.called);

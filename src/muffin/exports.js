@@ -1,5 +1,5 @@
 module.exports = function(path) {
-	muffin.path = path;
+	Muffin.path = path;
 
-	return muffin;
+	return Muffin;
 };

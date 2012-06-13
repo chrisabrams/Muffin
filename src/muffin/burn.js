@@ -4,7 +4,7 @@
  * @param o          {Object} Options that are passed to destroy()
  * @param o.path     {String} Path that files will be wiped
  */
-muffin.burn = function(o) {
+Muffin.burn = function(o) {
 	var _this    = this,
 		o = (o || {});
 
