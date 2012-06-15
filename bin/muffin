@@ -9,7 +9,14 @@ var Muffin = require('../lib/muffin')({
 });
 
 program
-	.version('0.0.1')
+	.version('0.0.1');
+
+program
+	.command('init')
+	.description('setup blog/site for first time')
+	.action(function() {
+		muffin.init();
+	});
 
 program
 	.command('bake')
@@ -34,13 +41,6 @@ program
 	.description('create a new post')
 	.action(function() {
 		muffin.post();
-	});
-
-program
-	.command('prepare')
-	.description('setup site template')
-	.action(function() {
-		muffin.prepare();
 	});
 
 program.parse(process.argv);

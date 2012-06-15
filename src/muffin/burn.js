@@ -9,19 +9,19 @@ Muffin.burn = function(o) {
 		o = (o || {});
 
 	//If a specific path was not called, then destroy (remove) the current path of the CLI
-	var destroyPath = (o.path || muffin.path.called);
+	var destroyPath = (o.path || Muffin.path.called);
 
-	var dirPaths = new muffin.directories({
+	var dirPaths = Muffin.dir({
 		path: destroyPath
 	});
 
 	//Remove directories
-	[dirPaths.articles, dirPaths.authors, dirPaths.blog, dirPaths.public, dirPaths.templates].forEach(function(path) {
+	dirPaths.destroy.forEach(function(path) {
 		wrench.rmdirSyncRecursive(path, true);
 	});
 
 	//Remove files
-	var files = new muffin.files({
+	var files = Muffin.files({
 		path: destroyPath
 	});
 

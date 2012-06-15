@@ -8,25 +8,33 @@
 Muffin.files = function(o) {
 	var o = (o || {});
 
-	var libPath    = (o.libPath || muffin.path.lib);
-	var outputPath = (o.outputPath || muffin.path.called);
+	var libPath    = (o.libPath || Muffin.path.lib);
+	var outputPath = (o.outputPath || Muffin.path.called);
 
 	return {
 		authors : {
-			default : libPath + '/default.json',
+			default : libPath + '/authors/default.json',
 			copy    : outputPath + '/authors/default.json'
 		},
 		content : {
-			default : libPath + '/default.md',
-			copy    : outputPath + '/articles/default.md'
+			default : libPath + '/articles/content.md',
+			copy    : outputPath + '/articles/content.md'
+		},
+		data : {
+			default : libPath + '/articles/data.json',
+			copy    : outputPath + '/articles/data.json'
 		},
 		muffin : {
 			default : libPath + '/muffin.json',
 			copy    : outputPath + '/muffin.json'
-		}
+		},
 		package : {
 			default : libPath + '/package.json',
 			copy    : outputPath + '/package.json'
+		},
+		templates : {
+			default : libPath + '/templates/default.jade',
+			copy    : outputPath + '/templates/default.jade'
 		}
 	};
 };

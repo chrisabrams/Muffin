@@ -14,15 +14,12 @@
 					"output": "/lib/muffin.js",
 					"minify": false,
 					"src": [
-						"/src/muffin.js",
-						"/src/blog/blog.js",
-					    "/src/directories.js",
-					    "/src/files.js",
-					    "/src/bake.js",
-					    "/src/burn.js",
-					    "/src/post.js",
-					    "/src/prepare.js",
-					    "/src/exports.js",
+						"/src/muffin/muffin.js",
+						"/src/muffin/exports.js",
+						"/src/muffin/files.js",
+					    "/src/muffin/dir.js",
+					    "/src/muffin/burn.js",
+					    "/src/muffin/init.js",
 					    "/src/util.js"
 					]
 				}
