@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-var program = require('commander');
+var program = require('commander'),
+	fs      = require('fs');
 
 var Muffin = require('../lib/muffin')({
 	called : process.cwd(),
@@ -15,32 +16,53 @@ program
 	.command('init')
 	.description('setup blog/site for first time')
 	.action(function() {
-		muffin.init();
+		Muffin.init();
 	});
 
 program
 	.command('bake')
 	.description('build the site out')
 	.action(function() {
-		muffin.bake({
-			input    : '/articles/demo.md',
-			output   : '/public/blog/demo.html',
-			template : '/templates/master.jade'
-		});
+		Muffin.bake();
 	});
 
 program
 	.command('burn')
-	.description('destroy the setup')
+	.description('destroy the site/blog')
 	.action(function() {
-		muffin.burn();
+		Muffin.burn();
 	});
 
 program
 	.command('post')
 	.description('create a new post')
 	.action(function() {
-		muffin.post();
+		program.prompt('name: ', function(name) {
+			//Did the user supply a name?
+			if(name == '' || name == ' ') {
+				console.log('Please enter a name.');
+				return;
+			}
+
+			//Now that blank has been checked, convert spaces to -
+			name.replace(/ /g, "-");
+
+			//Did they pick a name that already exists?
+			try {
+				var dir = fs.lstatSync(Muffin.path.called + '/articles/' + name);
+				if(dir.isDirectory()) {
+					console.log('This article name already exists.');
+					return;
+				}
+			}
+			//No it's not taken
+			catch(e) {
+				Muffin.blog.post({
+					name: name
+				});
+			}
+			
+		});
 	});
 
 program.parse(process.argv);

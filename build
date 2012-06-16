@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var Flow = require('flow')({
+    called : process.cwd(),
+    lib    : __dirname + '/../lib',
+    markx  : __dirname + '/../node_modules/markx/bin/markx'
+});
+
+var calledDir   = Flow.path.called;
+var configPath  = calledDir + '/flow.json';
+var config      = require(configPath);
+
+Flow.compile.Js({
+    calledDir   : Flow.path.called,
+    destination : '/lib/muffin.js',
+    src         : config.src
+});

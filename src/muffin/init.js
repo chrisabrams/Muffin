@@ -1,12 +1,12 @@
 /**
- * Sets up blo/site for first time use.
+ * Sets up blog/site for first time use.
  * 
  * @param o          {Object} Options that are passed to prepare()
  * @param o.path     {String} Path for output
  */
 Muffin.init = function(o) {
-	var _this = this,
-		o = (o || {});
+	var _this = this;
+	o = (o || {});
 
 	//If a specific path was not called, then initialize in the current path of the CLI
 	var libPath    = (o.libPath || Muffin.path.lib);

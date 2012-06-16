@@ -1,0 +1,20 @@
+{
+    "author": "Chris Abrams <mail@chrisabrams.com>",
+    "name": "Muffin",
+    "description": "A static blog created from Jade and Markdown - powered by node.js",
+    "version": "0.0.1",
+    "homepage": "https://github.com/chrisabrams/Muffin",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/chrisabrams/Muffin.git"
+    },
+    "engines": {
+        "node": ">= 0.6.17"
+    },
+    "dependencies": {
+        "http-server": "0.2.9"
+    },
+    "scripts": {
+        "start": "bin/server"
+    }
+}

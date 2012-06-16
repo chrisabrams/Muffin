@@ -1,13 +1,10 @@
 #Muffin (work in progress - not ready)
 A node.js module that converts jade and markdown into a static site/blog.
 
-##Blog
+##Commands
+To get a list of all the commands:
 
-###muffin.json
-
-	{
-		"blog": "/%Y/%M/%D/%T"
-	}
+	muffin -h
 
 ##Build
 
@@ -16,3 +13,11 @@ A node.js module that converts jade and markdown into a static site/blog.
 ##Test
 
 	make test
+
+##Blog
+
+###muffin.json
+
+	{
+		"blog": "/Y/M/D/T"
+	}

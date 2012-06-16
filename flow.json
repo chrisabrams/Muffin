@@ -19,6 +19,9 @@
 						"/src/muffin/files.js",
 					    "/src/muffin/dir.js",
 					    "/src/muffin/burn.js",
+					    "/src/muffin/bake.js",
+					    "/src/blog/blog.js",
+					    "/src/blog/post.js",
 					    "/src/muffin/init.js",
 					    "/src/util.js"
 					]

@@ -17,6 +17,7 @@ Muffin.dir = function(o) {
 	];
 
 	dir.create = dir;
+	dir.create.push(calledPath + '/articles/hello-world');
 	dir.create.push(calledPath + '/public/blog');
 	dir.destroy = dir;
 

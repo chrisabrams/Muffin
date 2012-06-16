@@ -18,11 +18,15 @@ Muffin.files = function(o) {
 		},
 		content : {
 			default : libPath + '/articles/content.md',
-			copy    : outputPath + '/articles/content.md'
+			copy    : outputPath + '/articles/hello-world/content.md'
 		},
 		data : {
 			default : libPath + '/articles/data.json',
-			copy    : outputPath + '/articles/data.json'
+			copy    : outputPath + '/articles/hello-world/data.json'
+		},
+		index : {
+			default : libPath + '/index.html',
+			copy    : outputPath + '/index.html'
 		},
 		muffin : {
 			default : libPath + '/muffin.json',
