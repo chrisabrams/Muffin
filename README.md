@@ -17,6 +17,39 @@ Navigate to the directory that you want to be your root of your site/blog and ty
 
 	Muffin setup
 
+###Settings file
+In the root of the directory will be a file entitled muffin.json - open this file
+
+{
+	"avatar": "http://www.gravatar.com/avatar/c43bfdf0dc55555135220098fa786d8b",
+	"author": "Chris Abrams",
+	"domain": "http://chrisabrams.com",
+	"engines": {
+		"markup": "jade",
+		"styles": "stylus"
+	},
+	"meta": {
+		"desc": "my cool static blog",
+		"title": "Chris Abrams"
+	},
+	"pages": [
+		"index"
+	],
+	"template": "default",
+	"urlformat": "/Y/m/d/T"
+}
+
+ - avatar: this is used for the RSS feed
+ - author: this is you
+ - domain: this is the full path to the blog (for rss feed links)
+ - engines
+  - markup: what templating engine for markup to use (currently jade is only option)
+  - styles: what css processor (if any) is used (options: css | less | stylus)
+ - meta: these are the site/rss meta tags
+ - pages: ignore for now
+ - template: the name of the template you are using (folder name in /templates)
+ - urlformat: used for formatting the article url
+
 ##Create a new post
 
 	Muffin post

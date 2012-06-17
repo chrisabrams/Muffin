@@ -1,6 +1,18 @@
 {
+	"avatar": "http://www.gravatar.com/avatar/c43bfdf0dc55555135220098fa786d8b",
+	"author": "Chris Abrams",
+	"domain": "http://chrisabrams.com",
+	"engines": {
+		"markup": "jade",
+		"styles": "stylus"
+	},
+	"meta": {
+		"desc": "my cool static blog",
+		"title": "Chris Abrams"
+	},
 	"pages": [
 		"index"
 	],
-	"urlformat": "/Y/M/D/T"
+	"template": "default",
+	"urlformat": "/Y/m/d/T"
 }
