@@ -40,10 +40,6 @@ Muffin.bake = function(o) {
 	//Remove stuff as it will be wrotten agains
 	wrench.rmdirSyncRecursive(Muffin.path.called + '/public/blog', true);
 
-	//Put fresh /blog back
-	//console.log(Muffin.path.called + '/public/blog');
-	//fs.mkdirSync(Muffin.path.called + '/public/blog', 0775);
-
 	//Get all articles to be built
 	readDir(articlePath, function(dunno, found) {
 		//console.log(arguments); return;
@@ -53,7 +49,6 @@ Muffin.bake = function(o) {
 
 		//Loop through directories and construct object for each directory; push to array for building
 		dirs.forEach(function(dir, key) {
-			//console.log("dir ", dir);
 			if(typeof dir == "string") {
 				obj = {}; //Needs to be reset or will append the new object n + 1 times
 				content = fs.readFileSync(dir + '/content.md', 'utf8');
@@ -134,10 +129,6 @@ Muffin.bake = function(o) {
 					jade: Muffin.path.called + '/templates/' + template + '/template.jade',
 					output: urlPath + '/index.html'
 				});
-				//console.log(Muffin.path.called + '/templates/' + template + '.jade');
-				//console.log(urlPath + '/index.html');
-				
-				//fs.writeFileSync(urlPath + '/index.html', markdown.toHTML(content), 'utf8');
 			}
 		});
 
@@ -155,74 +146,40 @@ Muffin.bake = function(o) {
 		contentOutput = markdown.toHTML(mainContent);
 
 		//Do all of the DOM parsing for main page
-		/*
-		Damn jade compiler "cant find body"
-		*/
-		/*var jadeTemplate = fs.readFileSync(Muffin.path.called + '/templates/' + template + '/template.jade', 'utf8');
-		jadeTemplate = jadeTemplate.toString();
-		console.log(typeof jadeTemplate);
-		var templateToHTML = jade.compile(jadeTemplate);
-		console.log(templateToHTML()); return;*/
-
-		/*
-		BUG: have to write to a /tmp/template.html to get the html file - lamers
-		*/
-		Flow.compile.html({
-			jade: Muffin.path.called + '/templates/' + template + '/template.jade',
-			output: Muffin.path.tmp + '/template.html'
-		});
-
-		var templateFinal = fs.readFileSync(Muffin.path.tmp + '/template.html', 'utf8');
-
-		//Main page
-		//Main page content
-		jsdom.env({
-			html: contentOutput, //content for main page
-			scripts: [
-				Muffin.path.lib + '/jQuery-1.7.2.min.js'
-			]
-		}, function (err, window) {
-			var $ = window.jQuery;
-
-			//Make h1's link to respective blog post
-			$('h1').wrap('<a href="#" />');
-
-			var output = $('body').html();
-
+		var convert = require(Muffin.path.lib + '/../node_modules/markx/lib/convert');
+		convert(Muffin.path.called + '/templates/' + template + '/template.jade', {}, function(templateFinal) {
+			
+			//Main page
 			jsdom.env({
-				html: templateFinal, //content for main page
+				html: contentOutput, //content for main page
 				scripts: [
 					Muffin.path.lib + '/jQuery-1.7.2.min.js'
 				]
 			}, function (err, window) {
 				var $ = window.jQuery;
 
-				$('#content').html(output);
-				$('.jsdom').remove(); //don't need this in template rendation
-				//console.log($('body').html());
-				var outputFinal = "<!DOCTYPE html>\n" + $('html').html();
-				
-				// public/index.html file
-				fs.writeFileSync(Muffin.path.called + '/public/index.html', outputFinal, 'utf8');
+				//Make h1's link to respective blog post
+				$('h1').wrap('<a href="#" />');
+
+				var output = $('body').html();
+
+				jsdom.env({
+					html: templateFinal, //content for main page
+					scripts: [
+						Muffin.path.lib + '/jQuery-1.7.2.min.js'
+					]
+				}, function (err, window) {
+					var $ = window.jQuery;
+
+					$('#content').html(output);
+					$('.jsdom').remove(); //don't need this in template rendation
+					//console.log($('body').html());
+					var outputFinal = "<!DOCTYPE html>\n" + $('html').html();
+					
+					// public/index.html file
+					fs.writeFileSync(Muffin.path.called + '/public/index.html', outputFinal, 'utf8');
+				});
 			});
-
-			/*var jsdom    = require(Muffin.path.lib + "/../node_modules/jsdom/lib/jsdom").jsdom,
-				document = jsdom("<html><head></head><body>hello world</body></html>"),
-				window   = document.createWindow();
-			console.log(window.document.innerHTML); return;*/
-
-
-			//var document = jsdom(templateFinal);
-			//var output = document.doctype + document.innerHTML;
-			//templateFinal = $(templateFinal);
-			//console.log(templateFinal);
-			//var content = templateFinal.getElementById('content');
-			//output = $(output).find('#content').html($('body').html());
-			//var output = $('body').html();
-
-			/*var document = jsdom(templateFinal);
-			var output = document.doctype + document.innerHTML;
-			var mainPageFinal = $('#content').html(output);*/
 		});
 	});
 
