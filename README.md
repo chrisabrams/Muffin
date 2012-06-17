@@ -29,7 +29,11 @@ In the root of the directory will be a file entitled muffin.json - open this fil
  - meta: these are the site/rss meta tags
  - pages: ignore for now
  - template: the name of the template you are using (folder name in /templates)
- - urlformat: used for formatting the article url
+ - urlformat: used for formatting the article url: Y, m, d are all optional and T is required
+  - Y = Year&nbsp; 4 digits
+  - m = Month 2 digits
+  - d = Day&nbsp;&nbsp; 2 digits
+  - T = Full title of the article
 
 ##Create a new post
 
@@ -53,20 +57,6 @@ To get a list of all the commands:
 ##Test
 
 	make test
-
-##Configuration
-Settings for baking the site/blog.
-
-	{
-		"blog": "/Y/m/d/T"
-	}
-
-Y = Year&nbsp; 4 digits
-m = Month 2 digits
-d = Day&nbsp;&nbsp; 2 digits
-T = Full title of the article
-
-Set up the format of the blog's url structure: Y, m, d are all optional and T is required
 
 ##Todo
 
