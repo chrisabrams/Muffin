@@ -17,6 +17,7 @@
         "fs-extra": "git+ssh://git@github.com:chrisabrams/node-fs-extra.git#0.0.2",
         "http-server": "0.2.9",
         "jade": "0.26.1",
+        "jQuery": "1.7.2",
         "jsdom": "0.2.14",
         "markdown": "0.4.0",
         "markx": "git+ssh://git@github.com:chrisabrams/markx.git#0.1.2",

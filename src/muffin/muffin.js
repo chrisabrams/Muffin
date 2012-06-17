@@ -6,6 +6,7 @@ var exec     = require('child_process').exec,
 	}), //It doesn't find it normally - stranga
 	fs       = require('fs-extra'),
 	jade     = require('jade'),
+	$        = require('jQuery'),
 	jsdom    = require('jsdom'),
 	markdown = require('markdown').markdown,
 	path     = require('path'),

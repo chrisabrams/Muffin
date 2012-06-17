@@ -40,6 +40,7 @@ Set up the format of the blog's url structure: Y, m, d are all optional and T is
 
 ##Todo
 
+ - Clean up Muffin.bake because it's a mess
  - Set limit on # of chars. for blogs without h2's
  - Allow year in the blog url to be 2 years
  - Make article title in url optionally shorter (have no idea how)

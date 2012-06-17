@@ -166,10 +166,8 @@ Muffin.bake = function(o) {
 				]
 			}, function (err, window) {
 				var $ = window.jQuery;
-				//var linkSegment = '/blog' + urlSegment;
 
 				//Make h1's link to respective blog post
-				//$('h1').wrap('<a href="'+linkSegment+'" />');
 				$('h1').each(function(i, obj) {
 					$(obj).wrap('<a href="/blog' + dirsList[i].urlSegment + '" />');
 				});
@@ -186,7 +184,6 @@ Muffin.bake = function(o) {
 
 					$('#content').html(output);
 					$('.jsdom').remove(); //don't need this in template rendation
-					//console.log($('body').html());
 					var outputFinal = "<!DOCTYPE html>\n" + $('html').html();
 					
 					// public/index.html file
