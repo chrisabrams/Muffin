@@ -9,6 +9,7 @@
 Muffin.bake = function(o) {
 	var _this    = this,
 		articleHTML,
+		config = require(Muffin.path.called + '/muffin.json'),
 		command = Muffin.path.markx + ' ',
 		content,
 		contentOutput,
@@ -18,6 +19,10 @@ Muffin.bake = function(o) {
 		date,
 		datePieces,
 		mainContent = '',
+		paths = {
+			public: Muffin.path.called + '/public',
+			template: Muffin.path.called + '/templates'
+		},
 		sortDate,
 		split,
 		title,
@@ -25,7 +30,6 @@ Muffin.bake = function(o) {
 		obj = {},
 		url = '',
 		urlFormat,
-		muffinConfig = require(Muffin.path.called + '/muffin.json'),
 		ymd, hms, year, month, day, hour, minute, second;
 	o = (o || {});
 
@@ -33,9 +37,6 @@ Muffin.bake = function(o) {
 	var libPath     = (o.libPath || Muffin.path.lib);
 	var outputPath  = (o.outputPath || Muffin.path.called);
 	var articlePath = outputPath + '/articles';
-
-	//Template name
-	template = muffinConfig.template;
 
 	//Remove stuff as it will be wrotten agains
 	wrench.rmdirSyncRecursive(Muffin.path.called + '/public/blog', true);
@@ -93,7 +94,7 @@ Muffin.bake = function(o) {
 				each article. I'm sure this isn't being done super effeciently.
 				*/
 
-				urlFormat = muffinConfig.urlformat.split('/');
+				urlFormat = config.urlformat.split('/');
 
 				var urlPath = Muffin.path.called + '/public/blog';
 				var urlSegment = '';
@@ -135,7 +136,7 @@ Muffin.bake = function(o) {
 				//Write respective article to it's directory with template wrapped around
 				Flow.compile.html({
 					md: dir + '/content.md',
-					jade: Muffin.path.called + '/templates/' + template + '/template.jade',
+					jade: paths.template + '/' + config.template + '/template.jade',
 					output: urlPath + '/index.html'
 				});
 			}
@@ -156,7 +157,7 @@ Muffin.bake = function(o) {
 
 		//Do all of the DOM parsing for main page
 		var convert = require(Muffin.path.lib + '/../node_modules/markx/lib/convert');
-		convert(Muffin.path.called + '/templates/' + template + '/template.jade', {}, function(templateFinal) {
+		convert(paths.template + '/' + config.template + '/template.jade', {}, function(templateFinal) {
 			
 			//Main page
 			jsdom.env({
@@ -187,18 +188,36 @@ Muffin.bake = function(o) {
 					var outputFinal = "<!DOCTYPE html>\n" + $('html').html();
 					
 					// public/index.html file
-					fs.writeFileSync(Muffin.path.called + '/public/index.html', outputFinal, 'utf8');
+					fs.writeFileSync(paths.public + '/index.html', outputFinal, 'utf8');
 				});
 			});
 		});
 	});
 
-	//Copy CSS from template over to public
-	fs.copy(Muffin.path.called + '/templates/' + template + '/css', Muffin.path.called + '/public/css', function(err){
-		if(err) {
-			console.error(err);
-		}
-	});
+	//Copy CSS from template over to public/css
+	switch(config.engines.styles) {
+		case 'css':
+			fs.copy(paths.template + '/' + config.template + '/css', paths.public + '/css', function(err){
+				if(err) {
+					console.error(err);
+				}
+			});
+
+			break;
+
+		case 'stylus':
+			var styls = wrench.readdirSyncRecursive(paths.template + '/' + config.template + '/stylus');
+			
+			styls.forEach(function(styl, key) {
+				var name = styl.split('.'); //get the filename without extension
+
+				stylus(fs.readFileSync(paths.template + '/' + config.template + '/stylus/' + styl, 'utf8')) //Get contents of stylus file
+					.render(function(err, css) {
+						fs.writeFileSync(paths.public + '/css/' + name[0] + '.css', css, 'utf8');
+					});
+			});
+			break;
+	}
 
 	//Figure out where metadata goes in this process (plates?)
 };
