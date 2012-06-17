@@ -37,6 +37,16 @@ Muffin.bake = function(o) {
 	var outputPath  = (o.outputPath || Muffin.path.called);
 	var articlePath = outputPath + '/articles';
 
+	//Create RSS Feed (will use it at the end but need object for looping through articles)
+	var feed = new RSS({
+        title: config.meta.title,
+        description: config.meta.desc,
+        feed_url: config.domain + '/rss.xml',
+        site_url: config.domain,
+        image_url: config.avatar,
+        author: config.author
+    });
+
 	//Remove stuff as it will be wrotten agains
 	wrench.rmdirSyncRecursive(Muffin.path.called + '/public/blog', true);
 
@@ -126,6 +136,14 @@ Muffin.bake = function(o) {
 
 				obj.urlSegment = urlSegment;
 
+				//Add data to RSS feed
+				feed.item({
+				    title: config.meta.title,
+				    description: config.meta.desc, //need to change to like first <p> or something
+				    url: config.domain + '/blog' + urlSegment, // link to the item
+				    date: obj.sortDate // any format that js Date can parse.
+				});
+
 				//Will need the data filtered/sorted for main page
 				dirsList.push(obj);
 
@@ -191,6 +209,9 @@ Muffin.bake = function(o) {
 				});
 			});
 		});
+
+		//Generate and write RSS file
+		fs.writeFileSync(paths.public + '/rss.xml', feed.xml(), 'utf8');
 	});
 
 	//Copy CSS from template over to public/css
