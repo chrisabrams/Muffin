@@ -45,6 +45,12 @@ Then you'll be greated with a prompt asking you for an article name
 
 Enter a unique name for the article
 
+##Generate site/blog
+
+	Muffin bake
+
+Now the site is ready to be deployed.
+
 ##Commands
 To get a list of all the commands:
 
