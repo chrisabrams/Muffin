@@ -1,7 +1,7 @@
 {
     "author": "Chris Abrams <mail@chrisabrams.com>",
     "name": "Muffin",
-    "description": "A static blog created from Jade and Markdown - powered by node.js",
+    "description": "Create a static website/blog.",
     "version": "0.0.1",
     "homepage": "https://github.com/chrisabrams/Muffin",
     "repository": {

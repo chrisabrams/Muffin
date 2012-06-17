@@ -1,9 +1,25 @@
-#Muffin (work in progress - not ready)
-A node.js module that converts jade and markdown into a static site/blog.
+#Muffin
+Create a static website/blog.
+
+##What it does
+Creates a website/blog into static .html files - no database needed.
+
+ - Converts articles written markdown into .html
+ - Allows for a single template written in .jade or .html to be used as the site's template
+ - Styling can be written in .css, .less, or .styl
+
+##Getting Started
+Install Muffin globally (As we will use it via the CLI)
+
+	npm install Muffin -g
+
+Navigate to the directory that you want to be your root of your site/blog and type
+
+	Muffin setup
 
 ##Create a new post
 
-	muffin post
+	Muffin post
 
 Then you'll be greated with a prompt asking you for an article name
 
@@ -14,7 +30,7 @@ Enter a unique name for the article
 ##Commands
 To get a list of all the commands:
 
-	muffin -h
+	Muffin -h
 
 ##Build
 
