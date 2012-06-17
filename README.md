@@ -1,6 +1,9 @@
 #Muffin
 Create a static website/blog.
 
+##Status: Alpha
+Project is usable although it has not been thoroughly tested so I don't think it is fair to put the beta tag on just yet. You are welcome to try it out and report any issues.
+
 ##What it does
 Creates a website/blog into static .html files - no database needed.
 
