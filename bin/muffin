@@ -6,7 +6,8 @@ var program = require('commander'),
 var Muffin = require('../lib/muffin')({
 	called : process.cwd(),
 	lib    : __dirname + '/../lib',
-	markx  : __dirname + '/../node_modules/markx/bin/markx'
+	markx  : __dirname + '/../node_modules/markx/bin/markx',
+	tmp    : __dirname + '/../tmp'
 });
 
 program
