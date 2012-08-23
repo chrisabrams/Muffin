@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/chrisabrams/Muffin.png)](http://travis-ci.org/chrisabrams/Muffin)
 #Muffin
 Create a static website/blog.
 
