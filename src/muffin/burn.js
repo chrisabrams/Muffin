@@ -25,7 +25,7 @@ Muffin.burn = function(o) {
 		path: destroyPath
 	});
 
-	var package = path.existsSync(files.package.copy);
+	var package = fs.existsSync(files.package.copy);
 	if(package) {
 		fs.unlink(files.package.copy);
 	}
